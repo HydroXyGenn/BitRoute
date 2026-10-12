@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# PyInstaller build artifacts
+build/
+*.spec
+
+# Optional: keep or ignore build folder
+dist/
