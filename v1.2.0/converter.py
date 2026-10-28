@@ -26,6 +26,9 @@ def main():
             pass
 
     app = QApplication(sys.argv)
+    app.setOrganizationName('Adil Abjaou (KingSlayer)')
+    app.setApplicationName('BitRoute')
+    app.setApplicationVersion('1.2.0')
 
     # Load custom application icon
     icon_path = get_resource_path("app_icon.ico")
