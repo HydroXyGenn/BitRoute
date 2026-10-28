@@ -1,6 +1,10 @@
 # 🌐 BitRoute — IPv4 Subnet, VLSM & Layer-3 Routing Toolkit (INPT ASEDS Edition)
 
-A modular desktop application built with **Python** and **PyQt6** for mastering IPv4 addressing, binary-to-decimal octet conversion, subnetting, **VLSM**, **MTU fragmentation**, **Longest Prefix Match (LPM) routing**, and **16-bit IPv4 Header Checksums**.
+[![Build BitRoute Executables](https://github.com/HydroXyGenn/BitRoute/actions/workflows/build.yml/badge.svg)](https://github.com/HydroXyGenn/BitRoute/actions/workflows/build.yml)
+[![Release v1.2.0](https://img.shields.io/badge/release-v1.2.0-00FF66?style=flat&logo=github)](https://github.com/HydroXyGenn/BitRoute/releases/tag/v1.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+A modular desktop application built with **Python** and **PyQt6** by **Adil Abjaou (KingSlayer)** for mastering IPv4 addressing, binary-to-decimal octet conversion, subnetting, **VLSM**, **MTU fragmentation**, **Longest Prefix Match (LPM) routing**, and **16-bit IPv4 Header Checksums**.
 
 ---
 
@@ -55,7 +59,7 @@ cd v1.2.0
 pip install PyQt6
 python bitroute.py
 ```
-*(Or double-click `run_app.vbs` / `run_app.bat` inside `v1.2.0/` to launch without a console window).*
+*(Or download the standalone [`BitRoute-v1.2.0-Windows.exe`](https://github.com/HydroXyGenn/BitRoute/releases/tag/v1.2.0) from Releases).*
 
 ### 🐧 Linux (`v1.2.0-linux` — Fedora / Ubuntu / Arch)
 **Option 1 — Build standalone native binary & desktop icon (Recommended):**
@@ -70,12 +74,31 @@ chmod +x build_linux.sh run_app.sh install_desktop_shortcut.sh
 ```bash
 cd v1.2.0-linux
 pip install PyQt6   # or: sudo dnf install -y python3-pyqt6
-python3 converter.py
+python3 bitroute.py
 ```
 
 ### 🏛️ Classic `v1.0.0`
 ```powershell
 cd v1.0.0
 pip install PyQt6
-python bitroute.py
+python converter.py
 ```
+
+---
+
+## 🛡️ Windows SmartScreen & Antivirus Transparency
+
+Because `BitRoute-v1.2.0-Windows.exe` is an independent open-source educational build (without a \$300/year commercial EV code-signing certificate), Windows SmartScreen may display an *"Unknown Publisher"* prompt on first download (`More info` $\rightarrow$ `Run anyway`).
+
+To guarantee **100% security and transparency**:
+1. **UPX Disabled (`upx=False`)**: Built without UPX binary compression to eliminate false-positive packer heuristics in Windows Defender.
+2. **Official Windows PE Metadata Embedded**: Right-click `BitRoute-v1.2.0-Windows.exe` $\rightarrow$ *Properties* $\rightarrow$ *Details* to inspect the embedded author and version signature (`Adil Abjaou (KingSlayer) — INPT ASEDS`).
+3. **Reproducible GitHub Actions Build & SHA-256 Checksum**: Every release includes [`BitRoute-v1.2.0-Windows.exe.sha256`](https://github.com/HydroXyGenn/BitRoute/releases/tag/v1.2.0), and the executable is compiled directly from public Python source on GitHub's servers via [`.github/workflows/build.yml`](./.github/workflows/build.yml).
+
+---
+
+## 👨‍💻 Author & Copyright
+
+Created & maintained by **Adil Abjaou** (aka **KingSlayer**) — Engineering Student at **INPT (ASEDS)**.
+
+Copyright © 2026 **Adil Abjaou (KingSlayer)**. Released under the [MIT License](./LICENSE).

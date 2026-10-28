@@ -1,0 +1,47 @@
+name: Build BitRoute Executables
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ "v*" ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows Executable (PyInstaller No-UPX)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyQt6 pyinstaller
+
+      - name: Compile BitRoute.exe from Source
+        working-directory: v1.2.0
+        run: |
+          pyinstaller --noconfirm --clean bitroute.spec
+
+      - name: Verify Embedded Windows Metadata & Generate SHA256
+        working-directory: v1.2.0/dist
+        shell: pwsh
+        run: |
+          (Get-Item "BitRoute.exe").VersionInfo | Format-List ProductName, FileDescription, CompanyName, LegalCopyright, FileVersion
+          $hash = (Get-FileHash "BitRoute.exe" -Algorithm SHA256).Hash
+          Write-Host "SHA256(BitRoute.exe) = $hash"
+          "$hash  BitRoute.exe" | Out-File -FilePath "BitRoute.exe.sha256" -Encoding utf8
+
+      - name: Upload Transparent Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BitRoute-v1.2.0-Windows-GitHubActions-Build
+          path: |
+            v1.2.0/dist/BitRoute.exe
+            v1.2.0/dist/BitRoute.exe.sha256
