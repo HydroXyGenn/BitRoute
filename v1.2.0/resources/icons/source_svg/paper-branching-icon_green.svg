@@ -1,0 +1,148 @@
+<svg id="paperIconSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%" class="w-full h-full block">
+                    <defs>
+                        <!-- Background Warm Sand Gradient -->
+                        <radialGradient id="sandGrad" cx="50%" cy="45%" r="70%" fx="50%" fy="45%">
+                            <stop id="bgStop1" offset="0%" stop-color="#e9ecea"/>
+                            <stop id="bgStop2" offset="65%" stop-color="#dee3e0"/>
+                            <stop id="bgStop3" offset="100%" stop-color="#ccd7d0"/>
+                        </radialGradient>
+
+                        <!-- Subtle Paper Fiber Texture Filter for Background -->
+                        <filter id="bgPaperGrain" x="0%" y="0%" width="100%" height="100%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="14" result="noise"/>
+                            <feDiffuseLighting id="bgLightColor" in="noise" lighting-color="#f1f3f2" surfaceScale="1.15" result="light">
+                                <feDistantLight azimuth="130" elevation="62"/>
+                            </feDiffuseLighting>
+                            <feBlend in="SourceGraphic" in2="light" mode="multiply"/>
+                        </filter>
+
+                        <!-- Realistic 3D Paper Cutout Elevation + Edge Bevel Filter (Base Layer) -->
+                        <filter id="cutoutBase" x="-15%" y="-15%" width="145%" height="150%">
+                            <!-- Soft ambient shadow -->
+                            <feDropShadow id="baseShadowAmbient" dx="3.26" dy="9.78" stdDeviation="7.33" flood-color="#0b1319" flood-opacity="0.62" result="drop1"/>
+                            <!-- Crisp contact shadow right under the paper edge -->
+                            <feDropShadow id="baseShadowCrisp" dx="1.63" dy="3.26" stdDeviation="1.96" flood-color="#000000" flood-opacity="0.46" result="drop2"/>
+                            <!-- Subtle top-left paper edge highlight -->
+                            <feOffset dx="-1" dy="-1" in="SourceAlpha" result="hlOffset"/>
+                            <feComposite in="SourceAlpha" in2="hlOffset" operator="out" result="topEdge"/>
+                            <feFlood flood-color="#ffffff" flood-opacity="0.18" result="hlColor"/>
+                            <feComposite in="hlColor" in2="topEdge" operator="in" result="topBevel"/>
+                            <!-- Merge Original Shape + Highlight over Drop Shadow -->
+                            <feMerge>
+                                <feMergeNode in="drop2"/>
+                                <feMergeNode in="SourceGraphic"/>
+                                <feMergeNode in="topBevel"/>
+                            </feMerge>
+                        </filter>
+
+                        <!-- Stronger Overlapping Drop Shadow for the Main Left Bar sitting ON TOP of the Square Frame -->
+                        <filter id="cutoutTopLayer" x="-15%" y="-20%" width="145%" height="165%">
+                            <!-- Deep elevation shadow cast onto the lower square frame and paper -->
+                            <feDropShadow id="topShadowAmbient" dx="4.89" dy="13.04" stdDeviation="8.96" flood-color="#060c10" flood-opacity="0.75" result="dropDeep"/>
+                            <!-- Sharp contact shadow -->
+                            <feDropShadow id="topShadowCrisp" dx="1.63" dy="4.07" stdDeviation="2.12" flood-color="#000000" flood-opacity="0.55" result="dropCrisp"/>
+                            <!-- Top-left bevel highlight -->
+                            <feOffset dx="-1" dy="-1" in="SourceAlpha" result="hlOffset"/>
+                            <feComposite in="SourceAlpha" in2="hlOffset" operator="out" result="topEdge"/>
+                            <feFlood flood-color="#ffffff" flood-opacity="0.22" result="hlColor"/>
+                            <feComposite in="hlColor" in2="topEdge" operator="in" result="topBevel"/>
+                            <feMerge>
+                                <feMergeNode in="dropCrisp"/>
+                                <feMergeNode in="SourceGraphic"/>
+                                <feMergeNode in="topBevel"/>
+                            </feMerge>
+                        </filter>
+
+                        <!-- Subtle tactile felt/cardstock texture overlay applied across the whole scene -->
+                        <filter id="cardstockGrain" x="0%" y="0%" width="100%" height="100%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="fineNoise"/>
+                            <feColorMatrix type="matrix" values="&#10;                                0 0 0 0 0&#10;                                0 0 0 0 0&#10;                                0 0 0 0 0&#10;                                0 0 0 0.038 0" in="fineNoise" result="alphaNoise"/>
+                            <feComposite in="alphaNoise" in2="SourceGraphic" operator="over"/>
+                        </filter>
+
+                        <!-- Reusable Right-Side Branch Bar Template -->
+                        <g id="rightOutputBar">
+                            <!-- 1. Orange Block -->
+                            <rect class="color-orange" x="0" y="0" width="46" height="74" rx="1.5" fill="#00ffd5" filter="url(#cutoutBase)"/>
+                            <!-- 2. Yellow/Gold Block sitting flush beside orange -->
+                            <rect class="color-yellow" x="46" y="0" width="56" height="74" rx="1.5" fill="#38cdff" filter="url(#cutoutBase)"/>
+                            <!-- 3. Dark Navy Block sitting flush beside yellow -->
+                            <rect class="color-navy" x="102" y="0" width="126" height="74" rx="1.5" fill="#1d201e" filter="url(#cutoutBase)"/>
+                            
+                            <!-- 4. Three Thin Vertical Dark Navy Stripes on the Right -->
+                            <rect class="color-navy" x="239" y="1" width="11" height="72" rx="1.5" fill="#1d201e" filter="url(#cutoutBase)"/>
+                            <rect class="color-navy" x="258" y="1" width="11" height="72" rx="1.5" fill="#1d201e" filter="url(#cutoutBase)"/>
+                            <rect class="color-navy" x="277" y="1" width="11" height="72" rx="1.5" fill="#1d201e" filter="url(#cutoutBase)"/>
+                        </g>
+                    </defs>
+
+                    <!-- 1. Borderless Warm Beige Paper Background -->
+                    <rect id="bgRect" x="0" y="0" width="1000" height="1000" fill="url(#sandGrad)" filter="url(#bgPaperGrain)"/>
+
+                    <!-- Main Diagram Scene -->
+                    <g id="diagramElements">
+
+                        <!-- =========================================================
+                             LAYER 1: CENTER HOLLOW SQUARE FRAME & 3 BRANCHING ARROWS
+                             (Sits underneath the main left horizontal bar)
+                             ========================================================= -->
+                        <g id="frameAndArrows" filter="url(#cutoutBase)">
+                            <!-- Upper Half of the Center Frame + Diagonal Up-Right Arrow -->
+                            <path class="color-navy" fill="#1d201e" d="&#10;                                M 353,363&#10;                                H 579&#10;                                V 400&#10;                                L 620,359&#10;                                L 609,348&#10;                                L 646,341&#10;                                L 639,378&#10;                                L 628,367&#10;                                L 579,416&#10;                                V 453&#10;                                H 548&#10;                                V 394&#10;                                H 384&#10;                                V 500&#10;                                H 353&#10;                                Z&#10;                            "/>
+
+                            <!-- Lower Half of the Center Frame + Diagonal Down-Right Arrow -->
+                            <path class="color-navy" fill="#1d201e" d="&#10;                                M 353,500&#10;                                H 384&#10;                                V 562&#10;                                H 548&#10;                                V 502&#10;                                H 579&#10;                                V 539&#10;                                L 628,588&#10;                                L 639,577&#10;                                L 646,614&#10;                                L 609,607&#10;                                L 620,596&#10;                                L 579,555&#10;                                V 593&#10;                                H 353&#10;                                Z&#10;                            "/>
+
+                            <!-- Middle Horizontal Arrow passing through the gap in the right wall -->
+                            <path class="color-navy" fill="#1d201e" d="&#10;                                M 539,465&#10;                                H 624&#10;                                V 451&#10;                                L 652,477.5&#10;                                L 624,504&#10;                                V 490&#10;                                H 539&#10;                                Z&#10;                            "/>
+                        </g>
+
+                        <!-- =========================================================
+                             LAYER 2: LEFT MAIN HORIZONTAL BAR
+                             (Overlaps ON TOP of the left wall of the hollow square frame)
+                             ========================================================= -->
+                        <g id="leftMainBar">
+                            <!-- Main Dark Navy Body - Casts shadow onto the square frame beneath it -->
+                            <rect class="color-navy" x="142" y="429" width="391" height="97" rx="2" fill="#1d201e" filter="url(#cutoutTopLayer)"/>
+                            
+                            <!-- Yellow/Gold Segment -->
+                            <rect class="color-yellow" x="87" y="429" width="56" height="97" rx="1.5" fill="#38cdff" filter="url(#cutoutTopLayer)"/>
+                            
+                            <!-- Leftmost Orange Segment -->
+                            <rect class="color-orange" x="47" y="429" width="40" height="97" rx="1.5" fill="#00ffd5" filter="url(#cutoutTopLayer)"/>
+
+                            <!-- Subtle vertical seam shadows between the orange, yellow, and navy blocks -->
+                            <line x1="87" y1="429" x2="87" y2="526" stroke="#000000" stroke-opacity="0.18" stroke-width="1.5"/>
+                            <line x1="143" y1="429" x2="143" y2="526" stroke="#000000" stroke-opacity="0.22" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- =========================================================
+                             LAYER 3: THREE RIGHT-SIDE HORIZONTAL OUTPUT BARS
+                             (Top, Middle, Bottom aligned vertically)
+                             ========================================================= -->
+                        <!-- Top Right Output Bar -->
+                        <g transform="translate(651, 305)">
+                            <use href="#rightOutputBar"/>
+                            <line x1="46" y1="0" x2="46" y2="74" stroke="#000000" stroke-opacity="0.16" stroke-width="1.5"/>
+                            <line x1="102" y1="0" x2="102" y2="74" stroke="#000000" stroke-opacity="0.2" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Middle Right Output Bar -->
+                        <g transform="translate(651, 441)">
+                            <use href="#rightOutputBar"/>
+                            <line x1="46" y1="0" x2="46" y2="74" stroke="#000000" stroke-opacity="0.16" stroke-width="1.5"/>
+                            <line x1="102" y1="0" x2="102" y2="74" stroke="#000000" stroke-opacity="0.2" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Bottom Right Output Bar -->
+                        <g transform="translate(651, 577)">
+                            <use href="#rightOutputBar"/>
+                            <line x1="46" y1="0" x2="46" y2="74" stroke="#000000" stroke-opacity="0.16" stroke-width="1.5"/>
+                            <line x1="102" y1="0" x2="102" y2="74" stroke="#000000" stroke-opacity="0.2" stroke-width="1.5"/>
+                        </g>
+
+                    </g>
+
+                    <!-- Fine tactile cardstock grain overlay across all cutout pieces -->
+                    <rect id="topGrainOverlay" x="0" y="0" width="1000" height="1000" fill="transparent" filter="url(#cardstockGrain)" pointer-events="none"/>
+                </svg>

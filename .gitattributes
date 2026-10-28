@@ -1,0 +1,5 @@
+# Ensure Linux shell scripts always keep LF line endings
+*.sh text eol=lf
+*.spec text eol=lf
+*.bat text eol=crlf
+*.vbs text eol=crlf

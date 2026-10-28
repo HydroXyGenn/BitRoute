@@ -1,10 +1,27 @@
-# Python cache
+﻿# Python cache
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.venv/
+venv/
 
-# PyInstaller build artifacts
+# PyInstaller build artifacts & binaries
 build/
-*.spec
-
-# Optional: keep or ignore build folder
 dist/
+*.exe
+*.tar.gz
+
+# LaTeX temporary files (keep .tex and .pdf)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
