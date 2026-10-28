@@ -1,4 +1,4 @@
-# 🌐 IPv4 Subnet Toolkit v1.2.0 — INPT ASEDS Edition
+# 🌐 BitRoute v1.2.0 — IPv4 Subnet, VLSM & Routing Toolkit (INPT ASEDS)
 
 Une application de bureau modulaire construite avec **Python** et **PyQt6** pour maîtriser l'adressage IPv4, le découpage en sous-réseaux, le **VLSM**, la **fragmentation MTU**, le **routage Longest Prefix Match (LPM)** et le **Checksum IPv4 16 bits**.
 
@@ -74,5 +74,5 @@ v1.2.0/
 
 ```bash
 pip install PyQt6
-python converter.py
+python bitroute.py
 ```

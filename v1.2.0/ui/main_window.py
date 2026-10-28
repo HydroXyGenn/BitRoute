@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("IPv4 Subnet Toolkit v1.2.0 — INPT ASEDS Edition")
+        self.setWindowTitle("BitRoute v1.2.0 — IPv4 Subnet, VLSM & Routing Toolkit (INPT ASEDS)")
         self.resize(1100, 720)
         self.setMinimumSize(980, 620)
         self.is_dark_mode = False

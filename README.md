@@ -1,4 +1,4 @@
-# 🌐 IPv4 Subnet Toolkit — INPT ASEDS Edition
+# 🌐 BitRoute — IPv4 Subnet, VLSM & Layer-3 Routing Toolkit (INPT ASEDS Edition)
 
 A modular desktop application built with **Python** and **PyQt6** for mastering IPv4 addressing, binary-to-decimal octet conversion, subnetting, **VLSM**, **MTU fragmentation**, **Longest Prefix Match (LPM) routing**, and **16-bit IPv4 Header Checksums**.
 
@@ -53,7 +53,7 @@ A modular desktop application built with **Python** and **PyQt6** for mastering 
 ```powershell
 cd v1.2.0
 pip install PyQt6
-python converter.py
+python bitroute.py
 ```
 *(Or double-click `run_app.vbs` / `run_app.bat` inside `v1.2.0/` to launch without a console window).*
 
@@ -77,5 +77,5 @@ python3 converter.py
 ```powershell
 cd v1.0.0
 pip install PyQt6
-python converter.py
+python bitroute.py
 ```

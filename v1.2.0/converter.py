@@ -1,7 +1,4 @@
-"""
-IPv4 Subnet Toolkit v1.2.0 — Main Entry Point
-Launches QApplication and MainWindow with custom application icon.
-"""
+"""BitRoute v1.2.0 (IPv4 Subnet, VLSM & Routing Toolkit) — Main Entry Point"""
 
 import os
 import sys

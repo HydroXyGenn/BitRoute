@@ -1,4 +1,4 @@
-# 🌐 IPv4 Subnet Toolkit v1.2.0 — Linux Edition (INPT ASEDS)
+# 🌐 BitRoute v1.2.0 — Linux Edition (IPv4 Subnet, VLSM & Routing Toolkit)
 
 Une application de bureau modulaire construite avec **Python** et **PyQt6** pour maîtriser l'adressage IPv4, le découpage en sous-réseaux, le **VLSM**, la **fragmentation MTU**, le **routage Longest Prefix Match (LPM)** et le **Checksum IPv4 16 bits** — adaptée et optimisée pour **Linux (Fedora / RHEL / CentOS, Debian/Ubuntu, Arch)**.
 

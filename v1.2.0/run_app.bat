@@ -1,2 +1,1 @@
-@echo off
-start "" pythonw converter.py
+python bitroute.py

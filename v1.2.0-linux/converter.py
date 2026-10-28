@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-IPv4 Subnet Toolkit v1.2.0 (Linux Edition) — Main Entry Point
-Launches QApplication and MainWindow with custom application icon and Wayland/X11 desktop integration.
-"""
+"""BitRoute v1.2.0 (Linux Edition) — Main Entry Point"""
 
 import os
 import sys
@@ -49,7 +46,7 @@ def main():
             pass
 
     app = QApplication(sys.argv)
-    app.setApplicationName("IPv4 Subnet Toolkit")
+    app.setApplicationName("BitRoute")
     app.setOrganizationName("INPT-ASEDS")
     # Link window to ipv4-subnet-toolkit.desktop on Linux (GNOME/KDE Wayland & X11 dock icon)
     if hasattr(app, "setDesktopFileName"):
